@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+  <title>Ugochukwu Egeonu - HNGx Project One</title>
+  <link rel="shortcut icon" href="../images/WhatsApp Image 2023-08-14 at 11.58.30.jpg" type="image/x-icon">
+</head>
+<body>
+    <!-- Avatar icon -->
+    <div class="flex items-center justify-center font-syne">
+        <div class="bg-white w-full md:w-1/3 mt-20 rounded-lg shadow-lg shadow-gray-500">
+          <div class="flex items-center justify-center pt-10 flex-col">
+            <img src="../images/WhatsApp Image 2023-08-14 at 11.58.30.jpg" class= "ring ring-blue-400 hover:ring-blue-500 rounded-full w-24 h-24 object-cover" data-testid="slackDisplayImage" alt="Salad Developer">
+            <h1 class="text-gray-800 font-semibold text-xl mt-5">Ugochukwu Egeonu</h1>
+            <h1 class="text-gray-700 text-sm" data-testid="slackUserName">Salad Developer</h>
+              <h1 class="text-gray-500 text-sm p-4 text-center">
+                I am a Frontend Developer who loves to build amazing things that live on the web. I am  currently interning at HNGx
+              </h1>
+          </div>
+
+          <!-- Clock Section -->
+          <div class="flex flex-col md:flex-row justify-between p-4 text-center">
+            <h1 class="text-md md:text-sm hover:text-blue-400 text-gray-500" data-testid="currentUTCTime"></h1>
+            <h1 class="text-md md:text-sm hover:text-blue-400 text-gray-500" data-testid="currentDayOfTheWeek"></h1>
+            <!-- Track -->
+            <h1 class="text-md md:text-sm hover:text-blue-400 text-gray-500" data-testid="myTrack">Frontend</h1>
+
+            <!-- GitHub URL -->
+            <a class="text-md md:text-sm hover:text-blue-400 text-gray-500" href="https://github.com/hugolee003/HNGx-Project-One" target="_blank" data-testid="githubURL">
+                GitHub Repository
+            </a>
+
+          </div>
+          
+        </div>
+      
+    </div>
+      
+
+
+    <script>
+        // Function to get the current day of the week
+        function getCurrentDayOfWeek() {
+          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          const currentDate = new Date();
+          const currentDayOfWeek = daysOfWeek[currentDate.getUTCDay()];
+          return currentDayOfWeek;
+        }
+      
+        // Update the element with the data-testid attribute "currentDayOfTheWeek"
+        document.addEventListener("DOMContentLoaded", function () {
+          const currentDayElement = document.querySelector('[data-testid="currentDayOfTheWeek"]');
+          if (currentDayElement) {
+            currentDayElement.textContent = getCurrentDayOfWeek();
+          }
+        });
+
+         // Function to get the current UTC time in milliseconds
+        function getCurrentUTCTime() {
+            return new Date().getTime();
+        }
+
+        // Update the element with the data-testid attribute "currentUTCTime"
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentUTCTimeElement = document.querySelector('[data-testid="currentUTCTime"]');
+            if (currentUTCTimeElement) {
+            currentUTCTimeElement.textContent = getCurrentUTCTime();
+            }
+        });
+
+        // Function to update the current UTC time with separators
+  function updateCurrentUTCTimeWithSeparator() {
+    const currentUTCTimeElement = document.querySelector('[data-testid="currentUTCTime"]');
+    if (currentUTCTimeElement) {
+      const currentTime = new Date();
+      const hours = currentTime.getUTCHours().toString().padStart(2, '0');
+      const minutes = currentTime.getUTCMinutes().toString().padStart(2, '0');
+      const seconds = currentTime.getUTCSeconds().toString().padStart(2, '0');
+      const separator = ':';
+      const formattedTime = `${hours}${separator}${minutes}${separator}${seconds}`;
+      currentUTCTimeElement.textContent = formattedTime;
+    }
+  }
+
+  // Call the function initially and then every second (1000 milliseconds)
+  updateCurrentUTCTimeWithSeparator(); // Call the function immediately to set the initial time
+  setInterval(updateCurrentUTCTimeWithSeparator, 1000); // Update the time every second
+
+
+    </script>
+
+
+</body>
+</html>
